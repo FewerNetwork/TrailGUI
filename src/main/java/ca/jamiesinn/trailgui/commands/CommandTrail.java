@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class CommandTrail implements CommandExecutor, TabCompleter
 {
     private TrailGUI trailGUI;

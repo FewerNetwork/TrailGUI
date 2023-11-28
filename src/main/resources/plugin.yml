@@ -1,7 +1,7 @@
 name: TrailGUI
 main: ca.jamiesinn.trailgui.TrailGUI
 version: ${project.version}
-author: JamieSinn
+authors: [ JamieSinn, Loving11ish ]
 softdepend: [Essentials]
 api-version: 1.19
 
