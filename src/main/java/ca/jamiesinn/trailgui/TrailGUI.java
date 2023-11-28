@@ -74,7 +74,7 @@ public class TrailGUI
     private void load()
     {
         reloadConfig();
-        maxTrails = getConfig().getInt("maxActiveTrails");
+        maxTrails = getConfig().getInt("maxActiveTrails") - 1;
         oneTrailAtATime = getConfig().getBoolean("oneTrailAtATime", false);
         prefix = getConfig().getString("prefix").replaceAll("&", "\u00A7");
 

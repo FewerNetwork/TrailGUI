@@ -142,6 +142,11 @@ public class Listeners implements Listener
         {
             return;
         }
+
+        if (!player.isFlying() && !player.isGliding()) {
+            return;
+        }
+
         List<Trail> trails = TrailGUI.enabledTrails.get(player.getUniqueId());
         try
         {
