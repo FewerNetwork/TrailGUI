@@ -47,6 +47,9 @@ oneTrailAtATime: false
 #Max number of concurrently equipped trails - Only used if the above is false - use 0 for no limit
 maxActiveTrails: 0
 
+#Set below the default trail to apply on player join. Set to "none" to disable. (default: "ColoredRedDust")
+defaultJoinTrailStringName: "ColoredRedDust"
+
 ############################################################
 # +------------------------------------------------------+ #
 # |          Configuration: GUI                    | #

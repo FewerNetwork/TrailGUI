@@ -1,17 +1,23 @@
 package ca.jamiesinn.trailgui;
 
 import ca.jamiesinn.trailgui.trails.Trail;
+import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 public class Listeners implements Listener
 {
@@ -147,6 +153,10 @@ public class Listeners implements Listener
             return;
         }
 
+        if (player.getGameMode().equals(GameMode.SPECTATOR)) {
+            return;
+        }
+
         List<Trail> trails = TrailGUI.enabledTrails.get(player.getUniqueId());
         try
         {
@@ -159,6 +169,31 @@ public class Listeners implements Listener
         {
             Util.clearTrails(player);
         }
+    }
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+
+        final Player player = event.getPlayer();
+
+        if (player.hasPermission("trailgui.bypass.jointrail")
+                ||player.hasPermission("trailgui.bypass.*")
+                ||player.hasPermission("trailgui.*")) {
+            return;
+        }
+
+        String defaultTrailType = TrailGUI.getPlugin().getConfig().getString("defaultJoinTrailStringName", "ColoredRedDust");
+
+        if (defaultTrailType.equals("none")) {
+            return;
+        }
+
+        List<Trail> trailTypes = new ArrayList<>();
+
+        trailTypes.add(TrailGUI.trailTypes.get(defaultTrailType));
+
+        Trail.enableEvent(Bukkit.getPlayer(player.getUniqueId()), trailTypes);
+        TrailGUI.enabledTrails.put(player.getUniqueId(), trailTypes);
     }
 
     @EventHandler
