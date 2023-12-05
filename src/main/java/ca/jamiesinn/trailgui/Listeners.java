@@ -182,6 +182,10 @@ public class Listeners implements Listener
             return;
         }
 
+        if (TrailGUI.enabledTrails.containsKey(player.getUniqueId())) {
+            return;
+        }
+
         String defaultTrailType = TrailGUI.getPlugin().getConfig().getString("defaultJoinTrailStringName", "ColoredRedDust");
 
         if (defaultTrailType.equals("none")) {
