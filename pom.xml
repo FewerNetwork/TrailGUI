@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ca.jamiesinn</groupId>
     <artifactId>TrailGUI</artifactId>
-    <version>6.16.6-CUSTOM</version>
+    <version>6.16.7-CUSTOM</version>
 
     <properties>
         <java.version>11</java.version>
@@ -14,13 +14,12 @@
     </properties>
 
     <build>
-        <defaultGoal>clean install package test</defaultGoal>
         <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.13.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
